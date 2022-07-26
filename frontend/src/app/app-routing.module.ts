@@ -1,3 +1,4 @@
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { FoodPageComponent } from './components/pages/food-page/food-page.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'tag/:tag', component: HomeComponent },
   { path: 'food/:id', component: FoodPageComponent },
   { path: 'cart-page', component: CartPageComponent },
+  { path: 'login', component: LoginPageComponent }
 ];
 
 @NgModule({
