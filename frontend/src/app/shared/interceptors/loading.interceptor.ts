@@ -8,8 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
-
-var peningRequests = 0;
+var pendingRequests = 0;
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
 
@@ -17,7 +16,8 @@ export class LoadingInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.loadingService.showLoading();
-    peningRequests = peningRequests + 1
+    pendingRequests = pendingRequests + 1;
+
     return next.handle(request).pipe(
       tap({
         next:(event) => {
@@ -32,10 +32,9 @@ export class LoadingInterceptor implements HttpInterceptor {
     );
   }
 
-  handleHideLoading() {
-    peningRequests = peningRequests - 1;
-    if(peningRequests === 0){
-      this.loadingService.hideLoading();
-    }
+  handleHideLoading(){
+    pendingRequests = pendingRequests - 1;
+    if(pendingRequests === 0)
+    this.loadingService.hideLoading();
   }
 }

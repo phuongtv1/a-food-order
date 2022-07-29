@@ -32,7 +32,7 @@ export interface Order {
     totalPrice:number;
     name: string;
     address: string;
-    addressLatLng?:LatLng;
+    addressLatLng:LatLng;
     paymentId:string;
     status: OrderStatus;
     user: Types.ObjectId;
@@ -52,6 +52,9 @@ const orderSchema = new Schema<Order> ({
 }, {
     timestamps: true,
     toJSON: {
+        virtuals: true
+    },
+    toObject: {
         virtuals: true
     }
 })

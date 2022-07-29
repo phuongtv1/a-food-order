@@ -10,4 +10,6 @@ export default (req: any, res: any, next: any) => {
     } catch (error) {
         res.status(HTTP_UNAUTHORIZED).send();
     }
+
+    return next();
 }
