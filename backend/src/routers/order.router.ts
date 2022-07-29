@@ -47,8 +47,7 @@ router.get(
   })
 );
 
-router.post(
-  "/pay",
+router.post("/pay",
   asynceHandler(async (req: any, res) => {
     const {paymentId} = req.body;
     const order = await getNewOrderForCurrentUser(req);
